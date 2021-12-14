@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Title</title>
+    <link rel="icon" href="images\s-l500.ico"> 
+    <link rel="stylesheet" href="styleLab3.css">
+</head>
+
+<body class="grid">
+<div class="box b1">
+    <div class="container x">
+        <h1>Web - Lab №3</h1>
+    </div>
+</div>
+
+<div class="box b2">
+    <span> 
+        <ul>
+            <li> <a href="bar.html">Notification bar page</a> </li>
+        </ul>
+    </span>
+</div>
+
+<div class="box b3">
+    <p class="inputText">Send text to notification bar:</p>
+
+    <form action="/saveData" method="post">
+        <textarea name="inputText" class="inputString" type="text" cols="100" rows="10" maxlength="300"></textarea>
+        <button class="sendButton" type="submit">Send</button>
+    </form>
+</div>
+
+<div class="box b4">
+    <div class="container y">
+        <h2>By VIO</h2>
+    </div>
+</div>
+
+<div class="box b5">
+    <span>
+        <p>
+            Text &#128520; Test &#129313; Text &#128549; Test
+        </p>
+    </span>
+</div>
+
+<div class="box empty"> </div>
+
+<script>
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", '/getData', false);
+    xmlHttp.send(null);
+    var data = JSON.parse(xmlHttp.responseText).inputText;
+
+    let boxData = document.getElementsByClassName('box b3')[0];
+    let form = boxData.getElementsByTagName('form')[0];
+    let textArea = form.getElementsByTagName('textarea')[0];
+    textArea.innerText = data;
+</script>
+
+</body>
+</html>
